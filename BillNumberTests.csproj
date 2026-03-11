@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bill Number Parser\BillNumberParser.csproj" />
+    <ProjectReference Include="..\BillNumberParser\BillNumberParser.csproj" />
   </ItemGroup>
 
   <ItemGroup>
