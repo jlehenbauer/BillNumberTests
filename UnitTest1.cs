@@ -165,10 +165,34 @@ namespace Bill_Number_Tests
         }
 
         [Fact]
+        public void HR100_MixedCase_WithWhitespace_IsInstantiated()
+        {
+            // Arrange
+            BillNumber billNumber = new BillNumber(Chamber.H, BillType.R, 100);
+
+            // Assert
+            Assert.True(billNumber.IsValidBillNumber());
+            Assert.True(billNumber.IsValid);
+            Assert.Equal(Chamber.H, billNumber.BillChamber);
+            Assert.Equal(BillType.R, billNumber.BillType);
+            Assert.Equal(100, billNumber.Number);
+            Assert.Equal("HR00100", billNumber.BillNumberLong());
+            Assert.Equal("HR100", billNumber.BillNumberShort());
+            Assert.Equal("House Resolution 100", billNumber.BillFullName());
+        }
+
+        [Fact]
         public void HB00_NumberZero_ThrowsArgumentException()
         {
             // Zero is not a valid bill number
             Assert.Throws<ArgumentException>(() => new BillNumber("HB00"));
+        }
+
+        [Fact]
+        public void HB00_NumberZero_Constructor_ThrowsArgumentException()
+        {
+            // Zero is not a valid bill number
+            Assert.Throws<ArgumentException>(() => new BillNumber(Chamber.H, BillType.B, 0));
         }
 
         [Fact]
