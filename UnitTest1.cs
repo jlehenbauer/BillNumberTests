@@ -182,6 +182,12 @@ namespace Bill_Number_Tests
         }
 
         [Fact]
+        public void Repeated_Valid_Characters_ThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => new BillNumber("HHHHBBBBBBB02"));
+        }
+
+        [Fact]
         public void HB00_NumberZero_ThrowsArgumentException()
         {
             // Zero is not a valid bill number
